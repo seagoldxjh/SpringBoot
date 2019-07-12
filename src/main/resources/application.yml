@@ -1,0 +1,18 @@
+student:
+  name: 肖金海
+  age: 21
+  sex: true
+  birthday: 1998/01/12
+  location: { province: 中国,city: 重庆,zone: 南岸区}
+  hobbies:
+    - 吃
+    - 喝
+    - 玩
+    - 乐
+  skills:
+    - java
+    - spring
+  pet:
+    name: 旺财
+    strain: 阿拉斯加
+
