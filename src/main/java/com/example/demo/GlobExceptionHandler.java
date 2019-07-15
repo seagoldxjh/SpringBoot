@@ -9,7 +9,6 @@
  */
 package com.example.demo;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,7 +26,7 @@ import java.util.Map;
  */
 
 @ControllerAdvice
-@MapperScan("com.example.demo.mapper")
+
 public class GlobExceptionHandler {
 
     @ExceptionHandler(Exception.class)

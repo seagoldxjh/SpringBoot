@@ -31,8 +31,11 @@ public class MailController {
 
     @RequestMapping("/sendSimpleMail")
     public String sendSimpleMail() {
+        //发给谁
         String to = "1157418149@qq.com";
+        //邮件标题
         String subject = "test html mail";
+        //邮件内容
         String content = "hello, this is html mail！";
         mailService.sendSimpleMail(to, subject, content);
         return "success";
@@ -49,8 +52,8 @@ public class MailController {
 
     @RequestMapping("/sendAttachmentsMail")
     public String sendAttachmentsMail() {
-        String filePath="E:\\11111.txt";
-        mailService.sendAttachmentMail("xxxx@qq.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
+        String filePath="src/main/resources/static/1.png";
+        mailService.sendAttachmentMail("1157418149@qq.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
         return "success";
     }
 
