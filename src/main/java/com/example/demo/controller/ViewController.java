@@ -25,6 +25,7 @@ public class ViewController {
 
 
 
+
     @RequestMapping("index")
     public String commonontroller() {
         System.out.println("---");
