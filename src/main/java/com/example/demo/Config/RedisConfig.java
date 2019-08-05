@@ -27,9 +27,12 @@ public class RedisConfig {
 
         jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
 
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         // 设置value的序列化规则和 key的序列化规则
-        redisTemplate.setValueSerializer(new StringRedisSerializer());
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        redisTemplate.setKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
 
