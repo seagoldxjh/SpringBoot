@@ -11,6 +11,8 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.DefaultTypedTuple;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
@@ -254,7 +256,9 @@ public class RedisController {
      * 模拟高并发查询redis or 数据库
      * 解决缓存穿透
      * @return 查询结果
+     * Cacheable放入redis中与代码手动放入redis中数据不是同一个
      */
+    @Cacheable(value = "students")
     @RequestMapping("redis/testRedis")
     public List<Student> testRedis(){
         List<Student> students = (List<Student>)redisTemplate.opsForValue().get("students");
@@ -280,6 +284,19 @@ public class RedisController {
                 }
             }
         }
+        return students;
+    }
+
+    @CachePut(value = "students")
+    @RequestMapping("redis/updateStudents")
+    public List<Student> updateStudents(){
+        System.out.println("更新数据");
+        List<Student> students = new ArrayList<>();
+        Student student = new Student();
+        student.setAge(21);
+        students.add(student);
+        students.add(student);
+        students.add(student);
         return students;
     }
 

@@ -12,6 +12,7 @@ package com.example.demo.entity;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.Map;
 
 @Component
 @ConfigurationProperties(prefix = "student")
-public class Student {
+public class Student implements Serializable {
 
     private String name;
     private int age;

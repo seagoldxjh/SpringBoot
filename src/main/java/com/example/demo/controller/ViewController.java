@@ -9,8 +9,14 @@
  */
 package com.example.demo.controller;
 
+import com.example.demo.entity.Video;
+import com.example.demo.mapper.VideoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -24,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewController {
 
 
+    @Autowired
+    VideoMapper videoMapper;
 
 
     @RequestMapping("index")
@@ -31,6 +39,15 @@ public class ViewController {
         System.out.println("---");
 
         return "index";
+
+    }
+
+    @RequestMapping("test")
+    @ResponseBody
+    public List<Video> test() {
+        System.out.println("---");
+
+        return videoMapper.selectList(null);
 
     }
 
