@@ -300,5 +300,10 @@ public class RedisController {
         return students;
     }
 
+    @RequestMapping("hello")
+    public String hello(){
+
+        return "你好";
+    }
 
 }
