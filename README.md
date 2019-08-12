@@ -21,6 +21,14 @@
 1. RDB（Redis DataBase）指定时间间隔内将内存数据集快照写入磁盘，恢复时直接读入内存
 2. AOF（Append only file）redis每次接收写操作同时写入aof文件中，redis重启后执行aof恢复数据
 
+### redis集群
+1. 主从复制(master/slave) -- replication实现多台服务器的数据同步
+    - 主服务器负责写
+    - 从服务器同步数据，用于读取
+    - 主服务器宕机后需手动将一个从服务器提升为主服务器
+2. 哨兵模式（Sentinel）
+    自动转移故障，不需要手动提升服务器等级
+
 
 ## 整合MyBatis Plus（极大简化传统Mybatis开发过程）
 官网API: https://mp.baomidou.com/guide/
