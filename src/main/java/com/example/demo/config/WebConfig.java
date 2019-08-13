@@ -7,7 +7,7 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package com.example.demo.Config;
+package com.example.demo.config;
 
 import com.example.demo.Interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +39,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     //排除不需要拦截的路径
     String excludePathPatterns[] = {
-        "/redis/**"
+        "/redis/**", "/rabbit/**"
     };
 
     @Override
