@@ -1,9 +1,33 @@
-# SpringBoot快速整合
+# SpringBoot快速整合SSM,Redis,RabbitMQ常见中间件及其功能实现
 
-## 整合Java Email（基本实现MailController）
-1. 文本发送
-2. 模版发送
-3. 附件携带发送
+## SpringBoot整合RabbitMQ
+1. pom.xml中配置相关的jar依赖
+```xml
+<!-- RabbitMQ消息队列依赖 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+ ```
+2. 在Springboot核心配置文件application.properties中配置Rabbit连接信息
+```properties
+#对于rabbitMQ的支持
+spring.rabbitmq.host=127.0.0.1
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+ ```
+3. 功能代码实现以及注释见RabbitController
+
+4. 大致运行原理
+生产者（publisher）连接到RabbitMQ服务器实体（Broker）根据用户账号密码找到对应的虚拟主机（每个虚拟主机独立的可以理解为一个单独的Broker），虚拟机将消息交给指定的交换器（Exchange），交换器根据路由键（路由规则[Binding]）将消息发送到对应的队列（Queue）
+消费者（Consumer）建立一个TCP连接到消息队列，为了节省资源，每次建立TCP资源耗费资源，采用信道复用技术，在一个TCP连接中开辟多条管道用于数据传输，消费者直接从Queue中获取数据
+
+5. 交换器类型
+- Direct:：默认方式，点对点，如果和Binding中的binding-key一致，交换器就将该消息发到对应的队列中。如果一个队列绑定到交换器要求路由键为“dog”，则只转发routing-key标记为dog的消息，它是完全匹配、单播的模式。
+- Fanout：类似于多播，每个发到fanout类型交换器的消息都会分到所有绑定的队列上去，fanout交换器不处理路由键，只是简单的将队列绑定到交换器上，每个发送到交换器的消息都会被转发到与该交换器绑定的所有队列上，很像子网广播，每台子网内的主机都获得了一份复制的消息，fanout类型转发消息是最快的。
+- Topic：binding-key支持通配符，有两个通配符，“#”代表0个或多个单词，“*”代表一个单词，若消息的routing-key与之匹配，则将消息发至该队列。
+
 
 ## 整合Spring Data Redis
 1. 五种基本类型的命令操作方式大致清楚（String,Hash,List,Set,sortedSet）
@@ -36,4 +60,9 @@
 1. insert后自动将id返回给当前对象
 2. 自动开启驼峰转换，自动开启危险sql注入
 3. 更多示例功能：https://github.com/seagoldxjh/MyBatisPlus_test
+
+## 整合Java Email（基本实现MailController）
+1. 文本发送
+2. 模版发送
+3. 附件携带发送
 
