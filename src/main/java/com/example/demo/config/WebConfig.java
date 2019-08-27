@@ -13,6 +13,7 @@ import com.example.demo.Interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -39,14 +40,22 @@ public class WebConfig implements WebMvcConfigurer {
 
     //排除不需要拦截的路径
     String excludePathPatterns[] = {
-        "/redis/**", "/rabbit/**"
+        "/redis/**", "/rabbit/**","/task/**"
     };
 
+    //为SpringMVC添加拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor())
                 .addPathPatterns(addPathPatterns)
                 .excludePathPatterns(excludePathPatterns);
+    }
+
+    //为SpringMVC添加视图控制器，访问路径都会转发到视图解析器最后返回页面
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("index2");
+        registry.addViewController("/index.html").setViewName("index2");
     }
 
 

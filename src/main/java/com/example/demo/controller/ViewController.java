@@ -34,13 +34,13 @@ public class ViewController {
     VideoMapper videoMapper;
 
 
-    @RequestMapping("index")
-    public String commonontroller() {
-        System.out.println("---");
-
-        return "index";
-
-    }
+//    @RequestMapping({"/","index.html"})
+//    public String view() {
+//        System.out.println("---");
+//
+//        return "index2";
+//
+//    }
 
     @RequestMapping("test")
     @ResponseBody
