@@ -29,7 +29,7 @@ import java.util.Set;
 
 /**
  *  Spring Data Redis操作redis缓存数据库
- *  常见5种数据类型对应的操作(String,Set,Zset,List,Hash)
+ *  常见5种数据类型对应的操作(String,Set,SortedSet,List,Hash)
  * @author xjh
  * @create 2019-08-01
  * @since 1.0.0
