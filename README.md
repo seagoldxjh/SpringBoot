@@ -18,6 +18,8 @@ spring.rabbitmq.username=guest
 spring.rabbitmq.password=guest
  ```
 3. 功能代码实现以及注释见RabbitController
+    - Quene
+    - Exchange
 
 4. 大致运行原理
 生产者（publisher）连接到RabbitMQ服务器实体（Broker）根据用户账号密码找到对应的虚拟主机（每个虚拟主机独立的可以理解为一个单独的Broker），虚拟机将消息交给指定的交换器（Exchange），交换器根据路由键（路由规则[Binding]）将消息发送到对应的队列（Queue）
