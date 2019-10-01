@@ -11,7 +11,7 @@
  ```
 2. 在Springboot核心配置文件application.properties中配置Rabbit连接信息
 ```properties
-#对于rabbitMQ的支持
+#RabbitMQ的支持
 spring.rabbitmq.host=127.0.0.1
 spring.rabbitmq.port=5672
 spring.rabbitmq.username=guest
