@@ -57,7 +57,7 @@ spring.rabbitmq.password=guest
 
 
 ## 整合MyBatis Plus（极大简化传统Mybatis开发过程）
-官网API: https://mp.baomidou.com/guide/
+[官网API] https://mp.baomidou.com/guide/
 
 1. insert后自动将id返回给当前对象
 2. 自动开启驼峰转换，自动开启危险sql注入
