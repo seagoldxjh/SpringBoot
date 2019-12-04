@@ -1,4 +1,4 @@
-# SpringBoot快速整合SSM,Redis,RabbitMQ常见中间件及其功能实现
+# SpringBoot快速整合SSM,Redis,RabbitMQ常见中间件及其功能实现 
 
 ## SpringBoot整合RabbitMQ 
 1. pom.xml中配置相关的jar依赖   
