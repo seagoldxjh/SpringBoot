@@ -67,4 +67,3 @@ spring.rabbitmq.password=guest
 1. 文本发送
 2. 模版发送
 3. 附件携带发送
-
